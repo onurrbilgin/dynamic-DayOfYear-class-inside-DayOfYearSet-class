@@ -40,8 +40,9 @@ namespace DayOfYearSetBilgin
             DayOfYearSet();
             DayOfYearSet(const vector <DayOfYear> &sets);
             DayOfYearSet(const DayOfYear day);
+            DayOfYearSet(const DayOfYearSet &doysObj);  // Copy constructor
             // Getters
-            const DayOfYear getDay(int month, int day) const; // not sure about this const at the beginning and return value being address or the object itself
+            const DayOfYear getDay(int month, int day) const;
             // Setters
             //
             // Other public member functions
@@ -52,12 +53,12 @@ namespace DayOfYearSetBilgin
             static int allDayOfYear();
             // Maybe, add input() and output()
 
-            // copy constructor
-            // assignment operator overload
-            ~DayOfYearSet();
+            DayOfYearSet& operator =(const DayOfYearSet &rtSide);   // Assignment operator overload
+            ~DayOfYearSet(); // Destructor
         private:
-            vector <DayOfYear> _tempSets;
+            //  vector <DayOfYear> _tempSets;
             DayOfYear* _sets;
+            int _size;
             static int _allDayOfYear;
 
 

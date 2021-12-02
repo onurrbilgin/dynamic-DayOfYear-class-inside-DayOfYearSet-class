@@ -11,6 +11,7 @@ using std::vector;
 using std::string;
 using std::cin;
 using std::cout;
+using std::endl;
 
 
 namespace
@@ -22,13 +23,25 @@ namespace DayOfYearSetBilgin
 {
     int DayOfYearSet::_allDayOfYear = 0;
 
+    // IMPLEMENTATION OF "DayOfYear" CLASS
+
     DayOfYearSet::DayOfYear::DayOfYear():_day(0), _month(0){
         _allDayOfYear++;
     }
     DayOfYearSet::DayOfYear::DayOfYear(int month):_day(0), _month(month){
+
+        if((month > 12) || (month < 0)) // Check if given month is valid
+            _month = 0;
+
         _allDayOfYear++;
     }
-    DayOfYearSet::DayOfYear::DayOfYear(int month, int day):_day(day), _month(month){
+    DayOfYearSet::DayOfYear::DayOfYear(int month, int day):_day(day), _month(month){    // I will accept all months as 30 days
+        
+        if((month > 12) || (month < 0)) // Check if given month is valid
+            _month = 0;
+        if((day > 30) || (day < 0)) // Check if given day is valid
+            _day = 0;
+        
         _allDayOfYear++;
     }
     
@@ -41,10 +54,24 @@ namespace DayOfYearSetBilgin
     }
 
     void DayOfYearSet::DayOfYear::setDay(int day){
+        
+        if((day > 30) || (day < 0)){
+
+            cout << "Invalid number for a day! (0 <= day <= 30)" << endl;
+            return;
+        }
+            
         _day = day;
     }
 
     void DayOfYearSet::DayOfYear::setMonth(int month){
+        
+        if((month > 12) || (month < 0)){
+
+            cout << "Invalid number for a month! (0 <= month <= 12)" << endl;
+            return;
+        }
+        
         _month = month;
     }
 
@@ -56,8 +83,10 @@ namespace DayOfYearSetBilgin
         // To be implemented..
     }
     
+    // END OF IMPLEMENTATION FOR "DayOfYear" CLASS
 
 
+    // IMPLEMENTATION OF "DayOfYearSet" CLASS
 
     DayOfYearSet::DayOfYearSet(){
         _sets = nullptr;
@@ -76,12 +105,40 @@ namespace DayOfYearSetBilgin
         // if the dereferenced object is not a replice in the array
     }
 
-    class DayOfYear DayOfYearSet::getDay(int month, int day) const{
+    const DayOfYear DayOfYearSet::getDay(int month, int day) const{ // Fix this
 
         // To be implemented..
     }
 
 
+    DayOfYearSet& DayOfYearSet::operator =(const DayOfYearSet &rtSide){ // Assignment operator overload
 
+        if(this == &rtSide) // Check if object on the left and right side of the operator= are equal
+            return *this;
+        else{   // If not, create new dynamic elements and transfer the data
+
+            _size = rtSide.size();
+            delete [] _sets;
+            _sets = new DayOfYear[_size];
+            
+            for(int i = 0; i < _size; ++i)
+                _sets[i] = rtSide._sets[i];
+
+            return *this;
+        }
+    }
+
+    DayOfYearSet::DayOfYearSet(const DayOfYearSet &doysObj):_size(doysObj.size()){    // Copy constructor
+
+        _sets = new DayOfYear[_size];
+        
+        for(int i = 0; i < _size; ++i)
+            _sets[i] = doysObj._sets[i];
+    }
+
+    DayOfYearSet::~DayOfYearSet(){  // Destructor
+
+        delete [] _sets;
+    }
 
 }   // End of namespace DayOfYearSetBilgin
