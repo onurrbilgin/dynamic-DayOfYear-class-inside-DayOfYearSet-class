@@ -38,7 +38,7 @@ namespace DayOfYearSetBilgin
         
             // Constructors
             DayOfYearSet();
-            DayOfYearSet(const vector <DayOfYear> &sets);
+            //DayOfYearSet(const vector <DayOfYear> &sets);
             DayOfYearSet(const DayOfYear day);
             DayOfYearSet(const DayOfYearSet &doysObj);  // Copy constructor
             // Getters
@@ -50,8 +50,11 @@ namespace DayOfYearSetBilgin
             void remove(const DayOfYear day);
             bool checkDuplicate(const DayOfYear obj) const;
             const int size() const;
+            DayOfYear* getArray() const;
             static int allDayOfYear();
-            // Maybe, add input() and output()
+            // Maybe, add input()
+
+            friend ostream& operator<<(ostream& out, const DayOfYearSet &obj);
 
             DayOfYearSet& operator =(const DayOfYearSet &rtSide);   // Assignment operator overload
             ~DayOfYearSet(); // Destructor

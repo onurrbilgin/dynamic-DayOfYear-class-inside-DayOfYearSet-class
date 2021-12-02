@@ -93,12 +93,12 @@ namespace DayOfYearSetBilgin
         _size = 0;
     }
 
-    DayOfYearSet::DayOfYearSet(const vector <DayOfYear> &sets){
+    /*DayOfYearSet::DayOfYearSet(const vector <DayOfYear> &sets){
         // To be implemented..
         // This constructor has to transfer the argument vector to private data vector then
         // create or stretch the dynamic array while ignoring replica elements
         // lastly has to clear the private data vector
-    }
+    }*/
 
     DayOfYearSet::DayOfYearSet(const DayOfYear day){
         // To be implemented..
@@ -227,7 +227,17 @@ namespace DayOfYearSetBilgin
         return _allDayOfYear;
     }
 
+    DayOfYearSet::DayOfYear* DayOfYearSet::getArray() const{
+        return _sets;
+    }
 
+    ostream& operator<<(ostream& out, const DayOfYearSet &obj){
+
+        for(auto i = 0; i < obj.size(); ++i)
+            out << "Day: " << obj.getArray()[i].getDay() << " , Month:" << obj.getArray()[i].getMonth() << endl;
+
+        return out;
+    }
 
 
 
