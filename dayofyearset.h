@@ -7,12 +7,10 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-using std::istream;
-using std::ostream;
-using std::string;
 
+//  TODO: Add big three: destructor, copy constructor and assignment overload. ALSO write overloads for both classes.
 
-namespace DayOfYearBilgin
+namespace DayOfYearSetBilgin
 {
     class DayOfYearSet
     {
@@ -22,7 +20,7 @@ namespace DayOfYearBilgin
                 public:
                     // Constructors
                     DayOfYear();
-                    DayOfYear(int month);  // explicit keyword is unnecessary here imho because truncation of a double or a float is useful
+                    DayOfYear(int month);  // explicit keyword is unnecessary here imho because truncation of a double or a float is kinda useful
                     DayOfYear(int month, int day);
                     // Getters
                     const int getDay() const;
@@ -36,22 +34,27 @@ namespace DayOfYearBilgin
                 private:
                     int _month;
                     int _day;
-            };
+            };  // End of DayOfYear class
         
             // Constructors
             DayOfYearSet();
             DayOfYearSet(const vector <DayOfYear> &sets);
-            DayOfYearSet(const DayOfYear* day);
+            DayOfYearSet(const DayOfYear day);
             // Getters
-            const DayOfYear* getADay(int month, int day) const; // not sure about this const at the beginning
+            const DayOfYear getDay(int month, int day) const; // not sure about this const at the beginning and return value being address or the object itself
             // Setters
             //
             // Other public member functions
             bool add(const DayOfYear day);
             bool remove(const DayOfYear day);
+            bool checkDuplicate(const DayOfYear* obj) const;
             const int size() const;
             static int allDayOfYear();
-        
+            // Maybe, add input() and output()
+
+            // copy constructor
+            // assignment operator overload
+            ~DayOfYearSet();
         private:
             vector <DayOfYear> _tempSets;
             DayOfYear* _sets;
@@ -59,9 +62,9 @@ namespace DayOfYearBilgin
 
 
 
-    };
+    };  // End of DayOfYearSet class
 
-}
+}   // End of namespace DayOfYearSetBilgin
 
 //  ...
 
