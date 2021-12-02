@@ -46,9 +46,9 @@ namespace DayOfYearSetBilgin
             // Setters
             //
             // Other public member functions
-            bool add(const DayOfYear day);
-            bool remove(const DayOfYear day);
-            bool checkDuplicate(const DayOfYear* obj) const;
+            void add(const DayOfYear day);
+            void remove(const DayOfYear day);
+            bool checkDuplicate(const DayOfYear obj) const;
             const int size() const;
             static int allDayOfYear();
             // Maybe, add input() and output()

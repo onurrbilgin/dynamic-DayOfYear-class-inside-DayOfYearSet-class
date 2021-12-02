@@ -90,6 +90,7 @@ namespace DayOfYearSetBilgin
 
     DayOfYearSet::DayOfYearSet(){
         _sets = nullptr;
+        _size = 0;
     }
 
     DayOfYearSet::DayOfYearSet(const vector <DayOfYear> &sets){
@@ -105,12 +106,21 @@ namespace DayOfYearSetBilgin
         // if the dereferenced object is not a replice in the array
     }
 
-    const DayOfYear DayOfYearSet::getDay(int month, int day) const{ // Fix this
+    const DayOfYearSet::DayOfYear DayOfYearSet::getDay(int month, int day) const{
 
-        // To be implemented..
+        for(auto i = 0; i < _size; ++i){
+
+            if((day == _sets[i].getDay()) && (month == _sets[i].getMonth())){
+                return _sets[i];
+                break;
+            }
+        }
+
+        cout << "Error! No object with the given day and month.." << endl;  // Im not sure about this type of return, if it assigns it to an object and there is no object
+        return;                                                             // that can cause some problems: come back to this later.
     }
 
-
+    // The big three start
     DayOfYearSet& DayOfYearSet::operator =(const DayOfYearSet &rtSide){ // Assignment operator overload
 
         if(this == &rtSide) // Check if object on the left and right side of the operator= are equal
@@ -121,7 +131,7 @@ namespace DayOfYearSetBilgin
             delete [] _sets;
             _sets = new DayOfYear[_size];
             
-            for(int i = 0; i < _size; ++i)
+            for(auto i = 0; i < _size; ++i)
                 _sets[i] = rtSide._sets[i];
 
             return *this;
@@ -132,13 +142,93 @@ namespace DayOfYearSetBilgin
 
         _sets = new DayOfYear[_size];
         
-        for(int i = 0; i < _size; ++i)
+        for(auto i = 0; i < _size; ++i)
             _sets[i] = doysObj._sets[i];
     }
 
     DayOfYearSet::~DayOfYearSet(){  // Destructor
-
         delete [] _sets;
     }
+    // End of the big three implementations
+
+    const int DayOfYearSet::size() const{   // Function that returns the size of array
+        return _size;
+    }
+
+    bool DayOfYearSet::checkDuplicate(const DayOfYear obj) const{
+
+        for(auto i = 0; i < _size; ++i){
+
+            if((obj.getDay() == _sets[i].getDay()) && (obj.getMonth() == _sets[i].getMonth())){
+
+                cout << "Error! Object already exists.." << endl;
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    void DayOfYearSet::add(const DayOfYear day){
+
+        if(DayOfYearSet::checkDuplicate(day)){
+
+            if(_size == 0){
+
+                _sets = new DayOfYear[++_size];
+                _sets[0] = day;
+
+            }else{
+
+                DayOfYear *temp;
+                temp = new DayOfYear[++_size];
+            
+                for(auto i = 0; i < _size - 1; i++)
+                    temp[i] = _sets[i];
+                temp[_size - 1] = day;
+                delete [] _sets;
+                _sets = temp;
+            }
+        }
+    }
+
+    void DayOfYearSet::remove(const DayOfYear day){
+
+        int location = -1;
+        for(decltype (location) i = 0; i < _size; ++i){
+
+            if((day.getDay() == _sets[i].getDay()) && (day.getMonth() == _sets[i].getMonth())){
+                location = i;
+                break;
+            }
+        }
+
+        if(location == -1){
+
+            cout << "Error! Object doesn't exist in the array.." << endl;
+            return;
+        }else{
+
+            DayOfYear *temp;
+            temp = new DayOfYear[--_size];
+
+            for(decltype (location) i = 0; i < _size + 1; ++i){
+
+                if(i != location)
+                    temp[i] = _sets[i];
+            }
+
+            delete [] _sets;
+            _sets = temp;
+        }
+    }
+
+    int DayOfYearSet::allDayOfYear(){
+        return _allDayOfYear;
+    }
+
+
+
+
 
 }   // End of namespace DayOfYearSetBilgin

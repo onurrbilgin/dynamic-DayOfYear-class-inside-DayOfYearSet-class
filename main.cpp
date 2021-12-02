@@ -1,11 +1,11 @@
 #include <iostream>
 #include "dayofyearset.h"
 
-// using..
+using namespace DayOfYearSetBilgin;
 
 int main(){
 
-
+    
 
 
     return 0;
