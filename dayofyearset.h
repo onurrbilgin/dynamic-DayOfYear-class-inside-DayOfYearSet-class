@@ -1,75 +1,94 @@
-//This is the header file dayofyearset.h. This is the interface for the class
-//DayOfYearSet. ...
+//This is the header file dayofyearset.h.
+//This is the interface for the class DayOfYearSet.
 
-#ifndef DAY_OF_YEAR.H
-#define DAY_OF_YEAR.H
+#ifndef DAY_OF_YEAR_H
+#define DAY_OF_YEAR_H
 
 #include <iostream>
-#include <cstdlib>
+#include <fstream>
+#include <cstdlib>  // Just used for exit() function
+#include <string>
 #include <vector>
 
-//  TODO: Add big three: destructor, copy constructor and assignment overload. ALSO write overloads for both classes.
 
 namespace DayOfYearSetBilgin
 {
     class DayOfYearSet
     {
         public:
+
             class DayOfYear
             {
                 public:
                     // Constructors
                     DayOfYear();
-                    DayOfYear(int month);  // explicit keyword is unnecessary here imho because truncation of a double or a float is kinda useful
-                    DayOfYear(int month, int day);
+                    explicit DayOfYear(int);
+                    DayOfYear(int, int);
+
                     // Getters
                     const int getDay() const;
                     const int getMonth() const;
-                    // Setters
-                    void setDay(int day);
-                    void setMonth(int month);
+
                     // Other public member functions
-                    void input();
                     void output() const;
+                
                 private:
+                    // Private data
                     int _month;
                     int _day;
+
             };  // End of DayOfYear class
         
             // Constructors
             DayOfYearSet();
-            //DayOfYearSet(const vector <DayOfYear> &sets);
-            DayOfYearSet(const DayOfYear day);
-            DayOfYearSet(const DayOfYearSet &doysObj);  // Copy constructor
+            DayOfYearSet(int, int);
+            DayOfYearSet(const std::vector <DayOfYear>&);
+            DayOfYearSet(const DayOfYear);
+            DayOfYearSet(const DayOfYearSet&);  // Copy constructor
+
             // Getters
-            const DayOfYear getDay(int month, int day) const;
-            // Setters
-            //
-            // Other public member functions
-            void add(const DayOfYear day);
-            void remove(const DayOfYear day);
-            bool checkDuplicate(const DayOfYear obj) const;
+            const DayOfYear getDayOfYear(int, int) const;
+
+            // Other member functions
+            void add(const std::vector <DayOfYear>&);
+            void add(const DayOfYear);
+            void add(int, int);
+            void remove(const std::vector <DayOfYear>&);
+            void remove(const DayOfYear);
+            void remove(int, int);
             const int size() const;
+            bool checkDuplicate(const DayOfYear) const;
+            void writeText() const;
             DayOfYear* getArray() const;
+
+            // Static functions
             static int allDayOfYear();
-            // Maybe, add input()
 
-            friend ostream& operator<<(ostream& out, const DayOfYearSet &obj);
+            // Friend global operator overloads
+            friend std::ostream& operator<<(std::ostream&, const DayOfYearSet&);
+            friend const DayOfYearSet operator!(const DayOfYearSet&);
 
-            DayOfYearSet& operator =(const DayOfYearSet &rtSide);   // Assignment operator overload
-            ~DayOfYearSet(); // Destructor
+            // Member operator overloads
+            bool operator==(const DayOfYearSet&) const;
+            bool operator!=(const DayOfYearSet&) const;
+            const DayOfYearSet operator+(const DayOfYearSet&) const;
+            const DayOfYearSet operator-(const DayOfYearSet&) const;
+            const DayOfYearSet operator^(const DayOfYearSet&) const;
+            const DayOfYear operator[](int) const;
+
+            // Assignment operator overload and destructor
+            DayOfYearSet& operator =(const DayOfYearSet&);
+            ~DayOfYearSet();
+        
         private:
-            //  vector <DayOfYear> _tempSets;
+            // Private data
             DayOfYear* _sets;
             int _size;
             static int _allDayOfYear;
-
-
+            static int _fileCounter;
 
     };  // End of DayOfYearSet class
 
 }   // End of namespace DayOfYearSetBilgin
-
-//  ...
 
 #endif  // DAY_OF_YEAR.H
