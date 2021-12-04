@@ -1,3 +1,5 @@
+// Author: Onur Bilgin
+
 //This is the implementation file dayofyearset.cpp of the class DayOfYearSet.
 //The interface for the class DayOfYearSet is in the header file dayofyearset.h.
 

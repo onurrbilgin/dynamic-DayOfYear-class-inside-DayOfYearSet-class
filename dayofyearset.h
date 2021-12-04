@@ -1,3 +1,5 @@
+// Author: Onur Bilgin
+
 //This is the header file dayofyearset.h.
 //This is the interface for the class DayOfYearSet.
 

@@ -1,4 +1,5 @@
 January 1st
+January 2nd
 January 3rd
 January 4th
 January 5th
@@ -31,18 +32,12 @@ January 31st
 February 1st
 February 2nd
 February 3rd
+February 4th
 February 5th
 February 6th
 February 7th
 February 8th
 February 9th
-February 10th
-February 11th
-February 12th
-February 13th
-February 14th
-February 15th
-February 16th
 February 17th
 February 18th
 February 19th
@@ -60,6 +55,7 @@ March 2nd
 March 3rd
 March 4th
 March 5th
+March 6th
 March 7th
 March 8th
 March 9th
@@ -92,6 +88,7 @@ April 4th
 April 5th
 April 6th
 April 7th
+April 8th
 April 9th
 April 10th
 April 11th
@@ -123,6 +120,7 @@ May 6th
 May 7th
 May 8th
 May 9th
+May 10th
 May 11th
 May 12th
 May 13th
@@ -155,6 +153,7 @@ June 8th
 June 9th
 June 10th
 June 11th
+June 12th
 June 13th
 June 14th
 June 15th
@@ -186,6 +185,7 @@ July 10th
 July 11th
 July 12th
 July 13th
+July 14th
 July 15th
 July 16th
 July 17th
@@ -218,6 +218,7 @@ August 12th
 August 13th
 August 14th
 August 15th
+August 16th
 August 17th
 August 18th
 August 19th
@@ -250,6 +251,7 @@ September 14th
 September 15th
 September 16th
 September 17th
+September 18th
 September 19th
 September 20th
 September 21st
@@ -281,6 +283,7 @@ October 16th
 October 17th
 October 18th
 October 19th
+October 20th
 October 21st
 October 22nd
 October 23rd
@@ -313,6 +316,7 @@ November 18th
 November 19th
 November 20th
 November 21st
+November 22nd
 November 23rd
 November 24th
 November 25th
@@ -344,6 +348,7 @@ December 20th
 December 21st
 December 22nd
 December 23rd
+December 24th
 December 25th
 December 26th
 December 27th
